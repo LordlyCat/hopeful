@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>图片轮播</title>
+	<link rel="stylesheet" type="text/css" href="cat.css">
+</head>
+<body>
+
+		<div class="wrapper">
+			<div class="video">
+				<div class="image" style="left:-600px">
+					<a href="#" class="pic"><img src="../img/964.jpg"></a>
+					<a href="#" class="pic"><img src="../img/960.jpg"></a>
+					<a href="#" class="pic"><img src="../img/961.jpg"></a>
+					<a href="#" class="pic"><img src="../img/962.jpg"></a>
+					<a href="#" class="pic"><img src="../img/963.jpg"></a>
+					<a href="#" class="pic"><img src="../img/964.jpg"></a>
+					<a href="#" class="pic"><img src="../img/960.jpg"></a>
+				</div>
+				<div class="left">
+					<a href="#" ><img src="../img/left.png"></a>
+				</div>
+				<div class ="right">
+					<a href="#"><img src="../img/right.png"></a>
+				</div>
+				<div id="button">
+					<span index="1" class="on"></span>
+					<span index="2"></span>
+					<span index="3"></span>
+					<span index="4"></span>
+					<span index="5"></span>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+		
+		window.onload = function(){
+			var last=document.getElementsByClassName("left")[0];
+			var next=document.getElementsByClassName("right")[0];
+			var buttons=document.getElementById("button").getElementsByTagName("span");
+			var index=1;
+			var image=document.getElementsByClassName("image")[0];
+			var animated=false;
+
+		function animate(offset){
+			var new_left=parseInt(image.style.left)+offset;
+			var time=300;
+			var interval=30;
+			var length=offset/(time/interval);
+			animated=true;
+			function go(){
+				if((length<0&&parseInt(image.style.left)>new_left)||(length>0 && parseInt(image.style.left)<new_left)){
+					image.style.left=parseInt(image.style.left)+length+"px";
+					setTimeout(go,interval);
+				}
+				else{
+					animated=false;
+					// image.style.left=parseInt(image.style.left)+offset+"px";
+					if(parseInt(image.style.left)>-600){
+						image.style.left="-3000px"
+					}
+					if(parseInt(image.style.left)<-3000){
+						image.style.left="-600px"
+					}
+				}
+			}
+			go();
+		}
+		
+		function changeButton(){
+			for(var i=0;i<buttons.length ;i++){
+				if(buttons[i].getAttribute("class")==="on"){
+					buttons[i].setAttribute("class","");
+					break;
+				}
+			}
+		}
+	
+		last.onclick = function(){
+			if(!animated){
+			animate(600);
+			}
+			changeButton();
+			if(index===1){
+				buttons[4].setAttribute("class","on");
+				index=5;
+			}
+			else{
+				buttons[index-2].setAttribute("class","on");
+				index=index-1;
+			}
+		}
+		next.onclick=function(){
+			if(!animated){
+			animate(-600);
+			}
+			changeButton();
+			if(index===5){
+				buttons[0].setAttribute("class","on");
+				index=1;
+			}
+			else{
+				buttons[index].setAttribute("class","on");
+				index=index+1;
+			}
+		}
+		for(var i=0;i < buttons.length ;i++){
+			buttons[i].onclick = function(){
+				var myindex =parseInt(this.getAttribute("index"));
+				var offset=(myindex-index)*(-600);
+				animate(offset);
+				index=myindex;
+				changeButton();
+				this.setAttribute("class","on");
+			}
+		}
+	}
+		</script>
+
+</body>
+</html>
+

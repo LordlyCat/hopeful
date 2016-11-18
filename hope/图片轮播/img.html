@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+
+    
+        <meta charset="UTF-8">
+        
+        <!--别写成css/text -->
+        <style type="text/css">
+            #navigator ul
+            {
+                list-style:none;
+            }
+            #navigator ul li ul
+            {
+                display:none;
+            }
+            #navigator ul li
+            {
+                float:left;
+                position:relative;
+            }
+            
+            #navigator ul li:hover ul
+            {
+                display:block;
+                position:absolute;
+                left:0px;
+                top:21px;
+            }
+            #navigator ul li ul li
+            {
+            
+                float:none;
+            }
+            .nav_ul_ul li
+            {
+            }
+            #navigator 
+            {
+                
+            }
+        </style>
+    </head>
+    <body>
+    
+    <div id = "navigator">
+        <ul id="nav_ul">
+            <li>
+                <a href="#">首页</a>
+                <ul class="nav_ul_ul">
+                    <li>电信</li>
+                    <li>联通</li>
+                    <li>移动</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">电信</a>
+                <ul class="nav_ul_ul">
+                    <li>优惠1</li>
+                    <li>优惠2</li>
+                    <li>优惠3</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">移动</a>
+                <ul class="nav_ul_ul">
+                    <li>电信</li>
+                    <li>联通</li>
+                    <li>移动</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">联通</a>
+                <ul class="nav_ul_ul">
+                    <li>电信</li>
+                    <li>联通</li>
+                    <li>移动</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    
+    
+    </body>
+</html>

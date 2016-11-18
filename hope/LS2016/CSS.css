@@ -1,0 +1,31 @@
+
+table{
+    margin: 0 auto;
+    
+}
+#cat{
+    color: white;
+    font-size: 40px;
+    background-color: rgb(30, 50, 60);
+    border-color:#3aa6bf;
+}
+#display{
+    background-color:black;
+    height: 100px;
+}
+tr{
+    
+    height: 100px;
+}
+td{
+    width: 120px;
+    text-align: center;
+    cursor: pointer;
+
+}
+.box:active,.box:hover td{
+    color: red;
+    background-color:blue;
+    font-size: 50px;
+    border-radius: 20%;
+}
